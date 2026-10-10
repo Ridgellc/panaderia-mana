@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Panaderia Mana | Mexican Bakery in Santa Maria, CA</title>
-<meta name="description" content="Conchas, cuernos, bolillos and homemade tamales on North Broadway, open 4 AM to 9 PM, seven days a week.">
+<meta name="description" content="Conchas, cuernos, bolillos and homemade tamales on North Broadway, open 4 AM to 9 PM, seven days a week. Order online and skip the line.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -136,7 +136,7 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
     <nav class="links" aria-label="Main">
       <a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#visit">Hours &amp; location</a>
     </nav>
-    <button class="btn small" data-open-flow>Order tamales</button>
+    <button class="btn small" data-open-flow>Order online</button>
   </div>
 </header>
 
@@ -145,9 +145,9 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
     <div class="wrap">
       <span class="eyebrow">Panadería Mexicana · Santa Maria</span>
       <h1>Pan dulce fresco, every single day</h1>
-      <p class="tagline">Conchas, cuernos, bolillos and homemade tamales on North Broadway, open 4 AM to 9 PM, seven days a week.</p>
+      <p class="tagline">Conchas, cuernos, bolillos and homemade tamales on North Broadway, open 4 AM to 9 PM, seven days a week. Order online and skip the line.</p>
       <div class="hero-actions">
-        <button class="btn" data-open-flow>Order tamales</button>
+        <button class="btn" data-open-flow>Order online</button>
         <a class="btn ghost" href="tel:+18059286619">Call (805) 928-6619</a>
       </div>
       <span class="rating-pill"><span class="st">★★★★</span>4.3 on Google · 405 reviews</span>
@@ -155,7 +155,7 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
   </section>
 
   <div class="wrap highlights">
-    <div class="hl"><div class="ic" aria-hidden="true">🌅</div><strong>Open early, every day</strong><span>4 AM to 9 PM, seven days a week.</span></div><div class="hl"><div class="ic" aria-hidden="true">🫔</div><strong>Tamales by the dozen</strong><span>Order ahead for parties, holidays and family dinners.</span></div><div class="hl"><div class="ic" aria-hidden="true">🥖</div><strong>Baked fresh daily</strong><span>Pan dulce, bolillos and traditional Mexican pastries.</span></div>
+    <div class="hl"><div class="ic" aria-hidden="true">🌅</div><strong>Open early, every day</strong><span>4 AM to 9 PM, seven days a week.</span></div><div class="hl"><div class="ic" aria-hidden="true">📱</div><strong>Order online</strong><span>Order anything in the case, from one concha to tamales by the dozen.</span></div><div class="hl"><div class="ic" aria-hidden="true">🥖</div><strong>Baked fresh daily</strong><span>Pan dulce, bolillos and traditional Mexican pastries.</span></div>
   </div>
 
   <section id="menu">
@@ -207,11 +207,11 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
 
 <div class="sticky-cta">
   <a class="btn ghost" href="tel:+18059286619">Call</a>
-  <button class="btn" data-open-flow>Order tamales</button>
+  <button class="btn" data-open-flow>Order online</button>
 </div>
 
 <dialog class="flow" id="flow" aria-labelledby="flow-title">
-  <div class="flow-head"><h3 id="flow-title">Order tamales</h3><button class="flow-close" aria-label="Close" data-close>×</button></div>
+  <div class="flow-head"><h3 id="flow-title">Order online</h3><button class="flow-close" aria-label="Close" data-close>×</button></div>
   <p class="flow-note">Preview: this shows how online ordering will work. Nothing is ordered.</p>
   <div class="flow-body" id="flow-body"></div>
   <div class="flow-foot"><button class="btn ghost small" id="flow-back">Back</button><button class="btn small" id="flow-next">Next</button></div>
@@ -219,7 +219,7 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
 
 <script>
 const KIND = "order";
-const ITEMS = [{"name": "Beef Tamales", "detail": "One dozen", "price": "$30"}, {"name": "Jalape\u00f1o & Cheese Tamales", "detail": "One dozen", "price": "$30"}, {"name": "Conchas", "detail": "One dozen", "price": "$15"}, {"name": "Pan Dulce Party Tray", "detail": "24 assorted", "price": "$32"}];
+const ITEMS = [{"name": "Conchas", "detail": "Vanilla or chocolate", "price": "$1.50", "group": "Pan Dulce"}, {"name": "Cuernos", "detail": "Sweet crescent rolls", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Orejas", "detail": "Flaky and caramelized", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Empanadas", "detail": "Pumpkin, pineapple or cream", "price": "$2.00", "group": "Pan Dulce"}, {"name": "Beef", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "Jalape\u00f1o & Cheese", "detail": "A customer favorite", "price": "$3.00", "group": "Tamales"}, {"name": "Pork", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "By the Dozen", "detail": "Mix and match", "price": "$30", "group": "Tamales"}, {"name": "Bolillos", "detail": "Baked fresh every morning", "price": "$0.75", "group": "Bread & Drinks"}, {"name": "Champurrado", "detail": "Hot chocolate atole", "price": "$3.50", "group": "Bread & Drinks"}, {"name": "Caf\u00e9 de Olla", "detail": "Cinnamon & piloncillo", "price": "$3.00", "group": "Bread & Drinks"}];
 const HOURS = ["Monday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Tuesday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Wednesday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Thursday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Friday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Saturday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Sunday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM"];
 const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
