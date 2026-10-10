@@ -42,6 +42,18 @@ nav.links a:hover { color: var(--accent); }
 .hero::before { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle at 30% 30%, var(--deco1), transparent 68%); }
 .hero::after { width: 380px; height: 380px; left: -140px; bottom: -180px; background: radial-gradient(circle at 60% 40%, var(--deco2), transparent 70%); }
 .hero .wrap { position: relative; z-index: 1; }
+.hero-grid { display: grid; gap: 2.2rem; align-items: center; }
+.hero-photo, .strip-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.14); }
+.hero-photo img, .strip-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.hero-photo { aspect-ratio: 4 / 3; }
+.hero-photo:hover img, .strip-photo:hover img { transform: scale(1.04); }
+.photo-tag { position: absolute; left: .7rem; bottom: .7rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,244,214,.92); color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .12rem .45rem; }
+.photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: clamp(2.5rem, 7vw, 3.5rem); }
+.strip-photo { aspect-ratio: 4 / 3; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-photo img, .strip-photo img { transition: none; } }
+@media (max-width: 540px) { .photo-strip { grid-template-columns: 1fr; } }
 .eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
 .hero h1 { font-size: clamp(2.6rem, 10vw, 4.6rem); max-width: 14ch; letter-spacing: -.01em; }
 .tagline { font-size: clamp(1.1rem, 4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; margin: 0 0 1.8rem; }
@@ -90,6 +102,8 @@ footer { padding: 2.5rem 0 6rem; text-align: center; color: var(--ink-soft); fon
 @media (min-width: 820px) {
   nav.links { display: flex; }
   header.top .btn { display: inline-flex; }
+  .hero-grid.has-photo { grid-template-columns: 1.05fr .95fr; }
+  .hero-photo { transform: rotate(1.5deg); }
   .sticky-cta { display: none; }
   footer { padding-bottom: 2.5rem; }
 }
@@ -142,7 +156,8 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap hero-grid has-photo">
+      <div>
       <span class="eyebrow">Panadería Mexicana · Santa Maria</span>
       <h1>Pan dulce fresco, every single day</h1>
       <p class="tagline">Conchas, cuernos, bolillos and homemade tamales on North Broadway, open 4 AM to 9 PM, seven days a week. Order online and skip the line.</p>
@@ -151,20 +166,24 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
         <a class="btn ghost" href="tel:+18059286619">Call (805) 928-6619</a>
       </div>
       <span class="rating-pill"><span class="st">★★★★</span>4.3 on Google · 405 reviews</span>
+      </div>
+      <figure class="hero-photo"><img src="images/photo-1.jpg" alt="Sugar-topped Mexican sweet bread" fetchpriority="high"><span class="photo-tag">Example photo</span></figure>
     </div>
   </section>
 
   <div class="wrap highlights">
-    <div class="hl"><div class="ic" aria-hidden="true">🌅</div><strong>Open early, every day</strong><span>4 AM to 9 PM, seven days a week.</span></div><div class="hl"><div class="ic" aria-hidden="true">📱</div><strong>Order online</strong><span>Order anything in the case, from one concha to tamales by the dozen.</span></div><div class="hl"><div class="ic" aria-hidden="true">🥖</div><strong>Baked fresh daily</strong><span>Pan dulce, bolillos and traditional Mexican pastries.</span></div>
+    <div class="hl reveal"><div class="ic" aria-hidden="true">🌅</div><strong>Open early, every day</strong><span>4 AM to 9 PM, seven days a week.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">📱</div><strong>Order online</strong><span>Order anything in the case, from one concha to tamales by the dozen.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">🥖</div><strong>Baked fresh daily</strong><span>Pan dulce, bolillos and traditional Mexican pastries.</span></div>
   </div>
+
+  <div class="wrap photo-strip"><figure class="strip-photo reveal"><img src="images/photo-2.jpg" alt="A tray of fresh pastries" loading="lazy"><span class="photo-tag">Example photo</span></figure><figure class="strip-photo reveal"><img src="images/photo-3.jpg" alt="Sweet bread rolls" loading="lazy"><span class="photo-tag">Example photo</span></figure></div>
 
   <section id="menu">
     <div class="wrap">
       <h2>Menu</h2>
       <p class="section-intro">A taste of what&#x27;s in the case. We&#x27;ll put in your real items and prices together.</p>
-      <div class="menu"><div class="menu-group"><h3>Pan Dulce <span class="tag">Example</span></h3><ul><li><div><strong>Conchas</strong><span class="desc">Vanilla or chocolate</span></div><span class="price">$1.50</span></li><li><div><strong>Cuernos</strong><span class="desc">Sweet crescent rolls</span></div><span class="price">$1.75</span></li><li><div><strong>Orejas</strong><span class="desc">Flaky and caramelized</span></div><span class="price">$1.75</span></li><li><div><strong>Empanadas</strong><span class="desc">Pumpkin, pineapple or cream</span></div><span class="price">$2.00</span></li></ul></div>
-<div class="menu-group"><h3>Tamales <span class="tag">Example</span></h3><ul><li><div><strong>Beef</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>Jalapeño &amp; Cheese</strong><span class="desc">A customer favorite</span></div><span class="price">$3.00</span></li><li><div><strong>Pork</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>By the Dozen</strong><span class="desc">Mix and match</span></div><span class="price">$30</span></li></ul></div>
-<div class="menu-group"><h3>Bread &amp; Drinks <span class="tag">Example</span></h3><ul><li><div><strong>Bolillos</strong><span class="desc">Baked fresh every morning</span></div><span class="price">$0.75</span></li><li><div><strong>Champurrado</strong><span class="desc">Hot chocolate atole</span></div><span class="price">$3.50</span></li><li><div><strong>Café de Olla</strong><span class="desc">Cinnamon &amp; piloncillo</span></div><span class="price">$3.00</span></li></ul></div></div>
+      <div class="menu"><div class="menu-group reveal"><h3>Pan Dulce <span class="tag">Example</span></h3><ul><li><div><strong>Conchas</strong><span class="desc">Vanilla or chocolate</span></div><span class="price">$1.50</span></li><li><div><strong>Cuernos</strong><span class="desc">Sweet crescent rolls</span></div><span class="price">$1.75</span></li><li><div><strong>Orejas</strong><span class="desc">Flaky and caramelized</span></div><span class="price">$1.75</span></li><li><div><strong>Empanadas</strong><span class="desc">Pumpkin, pineapple or cream</span></div><span class="price">$2.00</span></li></ul></div>
+<div class="menu-group reveal"><h3>Tamales <span class="tag">Example</span></h3><ul><li><div><strong>Beef</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>Jalapeño &amp; Cheese</strong><span class="desc">A customer favorite</span></div><span class="price">$3.00</span></li><li><div><strong>Pork</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>By the Dozen</strong><span class="desc">Mix and match</span></div><span class="price">$30</span></li></ul></div>
+<div class="menu-group reveal"><h3>Bread &amp; Drinks <span class="tag">Example</span></h3><ul><li><div><strong>Bolillos</strong><span class="desc">Baked fresh every morning</span></div><span class="price">$0.75</span></li><li><div><strong>Champurrado</strong><span class="desc">Hot chocolate atole</span></div><span class="price">$3.50</span></li><li><div><strong>Café de Olla</strong><span class="desc">Cinnamon &amp; piloncillo</span></div><span class="price">$3.00</span></li></ul></div></div>
     </div>
   </section>
 
@@ -172,9 +191,9 @@ dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
     <div class="wrap">
       <h2>What people say</h2>
       <p class="section-intro">4.3 stars from 405 reviews on Google.</p>
-      <div class="reviews"><figure class="review"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Just amazing. The bread is delicious so much so that I&#x27;m buying a ton tomorrow and bringing it to school on Monday for friends</blockquote><figcaption>Google review · a year ago</figcaption></figure>
-<figure class="review"><div class="review-stars" aria-label="4 out of 5 stars">★★★★</div><blockquote>This place has nice baked goods and some very tasty tamales. I tried the jalapeño with cheese and the beef tamales.</blockquote><figcaption>Google review · 4 years ago</figcaption></figure>
-<figure class="review"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Lovely bakery with homemade Mexican pastries.</blockquote><figcaption>Google review · 5 months ago</figcaption></figure></div>
+      <div class="reviews"><figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Just amazing. The bread is delicious so much so that I&#x27;m buying a ton tomorrow and bringing it to school on Monday for friends</blockquote><figcaption>Google review · a year ago</figcaption></figure>
+<figure class="review reveal"><div class="review-stars" aria-label="4 out of 5 stars">★★★★</div><blockquote>This place has nice baked goods and some very tasty tamales. I tried the jalapeño with cheese and the beef tamales.</blockquote><figcaption>Google review · 4 years ago</figcaption></figure>
+<figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Lovely bakery with homemade Mexican pastries.</blockquote><figcaption>Google review · 5 months ago</figcaption></figure></div>
     </div>
   </section>
 
@@ -222,6 +241,12 @@ const KIND = "order";
 const ITEMS = [{"name": "Conchas", "detail": "Vanilla or chocolate", "price": "$1.50", "group": "Pan Dulce"}, {"name": "Cuernos", "detail": "Sweet crescent rolls", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Orejas", "detail": "Flaky and caramelized", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Empanadas", "detail": "Pumpkin, pineapple or cream", "price": "$2.00", "group": "Pan Dulce"}, {"name": "Beef", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "Jalape\u00f1o & Cheese", "detail": "A customer favorite", "price": "$3.00", "group": "Tamales"}, {"name": "Pork", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "By the Dozen", "detail": "Mix and match", "price": "$30", "group": "Tamales"}, {"name": "Bolillos", "detail": "Baked fresh every morning", "price": "$0.75", "group": "Bread & Drinks"}, {"name": "Champurrado", "detail": "Hot chocolate atole", "price": "$3.50", "group": "Bread & Drinks"}, {"name": "Caf\u00e9 de Olla", "detail": "Cinnamon & piloncillo", "price": "$3.00", "group": "Bread & Drinks"}];
 const HOURS = ["Monday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Tuesday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Wednesday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Thursday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Friday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Saturday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM", "Sunday: 4:00\u202fAM\u2009\u2013\u20099:00\u202fPM"];
 const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+// Fade cards and photos in as they scroll into view
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+} else document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
 
 // Highlight today's hours
 const todayName = DAYS[new Date().getDay()];
